@@ -83,8 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				CE608C5126A8D05C0017595F /* MessagesModel.swift */,
-				CE608C5326A8D06D0017595F /* MessagesPresenter.swift */,
 				CE608C4026A8CF890017595F /* MessagesViewController.swift */,
+				CE608C5326A8D06D0017595F /* MessagesPresenter.swift */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
