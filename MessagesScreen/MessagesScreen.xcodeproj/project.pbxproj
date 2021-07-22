@@ -18,6 +18,9 @@
 		CE608C5926A8D0BD0017595F /* CurrentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE608C5726A8D0BD0017595F /* CurrentMessageCell.swift */; };
 		CE608C5A26A8D0BD0017595F /* CurrentMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE608C5826A8D0BD0017595F /* CurrentMessageCell.xib */; };
 		CE608C5D26A8D2340017595F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE608C5C26A8D2340017595F /* APIManager.swift */; };
+		CE608C5F26A9C8050017595F /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE608C5E26A9C8050017595F /* ViewController + Extension.swift */; };
+		CE608C6726A9DFE40017595F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE608C6626A9DFE40017595F /* Constants.swift */; };
+		CE608C6B26A9E0A20017595F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE608C6A26A9E0A20017595F /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		CE608C5726A8D0BD0017595F /* CurrentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMessageCell.swift; sourceTree = "<group>"; };
 		CE608C5826A8D0BD0017595F /* CurrentMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentMessageCell.xib; sourceTree = "<group>"; };
 		CE608C5C26A8D2340017595F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		CE608C5E26A9C8050017595F /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
+		CE608C6626A9DFE40017595F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE608C6A26A9E0A20017595F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,14 +72,13 @@
 		CE608C3B26A8CF890017595F /* MessagesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CE608C6426A9DFB60017595F /* Helpers */,
 				CE608C3C26A8CF890017595F /* AppDelegate.swift */,
 				CE608C3E26A8CF890017595F /* SceneDelegate.swift */,
-				CE608C5C26A8D2340017595F /* APIManager.swift */,
 				CE608C5026A8D0440017595F /* MVP */,
 				CE608C5B26A8D0C50017595F /* Cell */,
-				CE608C4226A8CF890017595F /* Main.storyboard */,
+				CE608C6C26A9E1DD0017595F /* Storyboards */,
 				CE608C4526A8CF8D0017595F /* Assets.xcassets */,
-				CE608C4726A8CF8D0017595F /* LaunchScreen.storyboard */,
 				CE608C4A26A8CF8D0017595F /* Info.plist */,
 			);
 			path = MessagesScreen;
@@ -96,6 +101,26 @@
 				CE608C5826A8D0BD0017595F /* CurrentMessageCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE608C6426A9DFB60017595F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE608C5E26A9C8050017595F /* ViewController + Extension.swift */,
+				CE608C5C26A8D2340017595F /* APIManager.swift */,
+				CE608C6A26A9E0A20017595F /* Reachability.swift */,
+				CE608C6626A9DFE40017595F /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CE608C6C26A9E1DD0017595F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE608C4726A8CF8D0017595F /* LaunchScreen.storyboard */,
+				CE608C4226A8CF890017595F /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +198,12 @@
 				CE608C5926A8D0BD0017595F /* CurrentMessageCell.swift in Sources */,
 				CE608C4126A8CF890017595F /* MessagesViewController.swift in Sources */,
 				CE608C3D26A8CF890017595F /* AppDelegate.swift in Sources */,
+				CE608C5F26A9C8050017595F /* ViewController + Extension.swift in Sources */,
 				CE608C5226A8D05C0017595F /* MessagesModel.swift in Sources */,
 				CE608C3F26A8CF890017595F /* SceneDelegate.swift in Sources */,
+				CE608C6B26A9E0A20017595F /* Reachability.swift in Sources */,
 				CE608C5D26A8D2340017595F /* APIManager.swift in Sources */,
+				CE608C6726A9DFE40017595F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Trent-House.MessagesScreen";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,7 +379,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Trent-House.MessagesScreen";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -36,7 +36,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aQU-RE-RCI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JGt-gl-Xiv"/>
                             <constraint firstItem="aQU-RE-RCI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ngn-kL-pkx"/>
@@ -58,9 +58,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4RB-Cc-UnD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6iD-n0-eEW">
+                    <navigationBar key="navigationBar" alpha="0.92000000000000004" contentMode="scaleToFill" largeTitles="YES" id="6iD-n0-eEW">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.77036241148457385" green="0.77036241148457385" blue="0.77036241148457385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

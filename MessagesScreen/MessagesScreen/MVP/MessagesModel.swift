@@ -8,7 +8,7 @@
 import Foundation
 
 
-// MARK: - WelcomeElement
+// MARK: - Модель для парсинга
 struct Messages: Codable {
     let user: User
     let message: CurrentMessage

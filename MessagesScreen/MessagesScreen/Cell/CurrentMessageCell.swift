@@ -18,5 +18,17 @@ class CurrentMessageCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        messageLabel.textColor = #colorLiteral(red: 0.5490196078, green: 0.5490196078, blue: 0.5490196078, alpha: 1)
+        userNameLabel.textColor = .black
+        userNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        dateLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        dateLabel.textColor = #colorLiteral(red: 0.5490196078, green: 0.5490196078, blue: 0.5490196078, alpha: 1)
+    }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userImageView.image = nil
+    }
 }

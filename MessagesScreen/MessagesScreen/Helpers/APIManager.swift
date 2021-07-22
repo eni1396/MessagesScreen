@@ -8,15 +8,15 @@
 import Foundation
 
 final class APIManager {
-    func fetch<T: Codable>(completion: @escaping (T) -> ()) {
+    private let serviceUnavailable = 503
+    
+    ///Загрузка данных из сети
+    func fetch<T: Codable>(completion: @escaping (T) -> (), errorHandler: @escaping (HTTPURLResponse?) -> ()) {
         let path = "https://s3-eu-west-1.amazonaws.com/builds.getmobileup.com/storage/MobileUp-Test/api.json"
         guard let url = URL(string: path) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error as? URLError, error.code == .notConnectedToInternet {
-                print("No internet connection")
-            }
-            if let response = response as? HTTPURLResponse, response.statusCode == 503 {
-                print("No connection to server. Please, try again later")
+            if let response = response as? HTTPURLResponse, response.statusCode == self.serviceUnavailable {
+                errorHandler(response)
             }
             guard let data = data else { return }
             do {
