@@ -16,6 +16,7 @@ class MessagesViewController: PresenterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        table.register(UINib(nibName: "CurrentMessageCell", bundle: nil), forCellReuseIdentifier: "currentChat")
         presenter.setViewDelegate(delegate: self)
         presenter.fetchMessages()
     }
@@ -27,6 +28,7 @@ class MessagesViewController: PresenterDelegate {
             self.table.reloadData()
         }
     }
+    
 }
 
 extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -35,10 +37,24 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "currentChat", for: indexPath)
-        cell.textLabel?.text = messages[indexPath.row].user.nickname
+        let cell = table.dequeueReusableCell(withIdentifier: "currentChat", for: indexPath) as! CurrentMessageCell
+        presenter.getImages(messages: messages, at: indexPath) { image in
+            DispatchQueue.main.async {
+                cell.userImageView.image = image
+                cell.userImageView.tintColor = .gray
+            }
+        }
+        cell.userNameLabel.text = messages[indexPath.row].user.nickname
+        cell.messageLabel.text = messages[indexPath.row].message.text
+        
+        let date = messages[indexPath.row].message.receivingDate
+        cell.dateLabel.text = "\(presenter.getDate(from: date))"
+        print("\(presenter.getDate(from: date))")
+        
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
+    }
 }
