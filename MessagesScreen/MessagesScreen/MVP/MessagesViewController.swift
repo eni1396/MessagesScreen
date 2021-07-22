@@ -11,6 +11,12 @@ class MessagesViewController: PresenterDelegate {
     
     @IBOutlet weak var table: UITableView!
     private let cellID = Constants.cellID
+    private let indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.style = .large
+        return indicator
+    }()
     private lazy var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
         rc.addTarget(self, action: #selector(refreshView(_:)), for: .valueChanged)
@@ -25,13 +31,13 @@ class MessagesViewController: PresenterDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private var isAllowedToRefresh: Bool = false
     
     private let presenter = MessagesPresenter()
     private var messages = [Messages]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        table.addSubview(indicator)
         table.addSubview(refreshControl)
         table.refreshControl = refreshControl
         table.register(UINib(nibName: "CurrentMessageCell", bundle: nil), forCellReuseIdentifier: cellID)
@@ -42,6 +48,10 @@ class MessagesViewController: PresenterDelegate {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if self.messages.isEmpty {
                 self.showBlankView()
@@ -50,8 +60,11 @@ class MessagesViewController: PresenterDelegate {
     }
     //MARK:- Проверка на подключение к сети
     private func checkForConnection() {
+        indicator.startAnimating()
+        
         if presenter.reachability.isNetworkAvailable() {
-            presenter.fetchMessages()
+                self.presenter.fetchMessages()
+              
         } else {
             showBlankView()
             showAlert(title: Constants.noNetworkError)
@@ -82,6 +95,7 @@ class MessagesViewController: PresenterDelegate {
             self.noDataLabel.isHidden = true
             self.table.separatorStyle = .singleLine
             self.refreshControl.endRefreshing()
+            self.indicator.stopAnimating()
             self.table.reloadData()
         }
     }
